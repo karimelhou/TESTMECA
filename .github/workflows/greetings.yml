@@ -1,6 +1,6 @@
 name: Greetings
 
-on: [pull_request_target, issues]
+on: [push]
 
 jobs:
   greeting:
@@ -14,3 +14,6 @@ jobs:
         repo-token: ${{ secrets.GITHUB_TOKEN }}
         issue-message: "Message that will be displayed on users' first issue"
         pr-message: "Message that will be displayed on users' first pull request"
+    - name: hello on push
+      if: ${{github.action == push }}
+      run: echo "Hello Karim"
